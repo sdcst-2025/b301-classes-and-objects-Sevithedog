@@ -41,5 +41,5 @@ class circle:
         print("this object destroyed")
     
 
-a = circle(r=-1)
+a = circle(r=1)
 print( a.area() )

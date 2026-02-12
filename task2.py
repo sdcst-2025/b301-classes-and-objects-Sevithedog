@@ -19,7 +19,7 @@ def getCoeffs():
                 break
             except:
                 print("invalid! It must be an integer. Try again")
-            
+ 
     return vars[0],vars[1],vars[2]   
 
 def getVertex(a,b,c):
