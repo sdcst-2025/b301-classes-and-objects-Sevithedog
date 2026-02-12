@@ -4,19 +4,33 @@ Create a class that creates a rectangular prism.  You should be able to set all 
 You should have class methods that also allow you to change the dimensions of the object.
 Instantiate 3 separate rectangular prisms with the test data given, and check the assertions are correct.
 """
-
+import math
 class rectPrism:
 
-    def __init__(self):
-        # note you will need to specify more input parameters
-        pass
+    def getmeasurements(self,kwargs**):
+        try: 
+            l = kwargs['l']
+            w = kwargs['w']
+            h = kwargs['h']
+        except: 
+            w = input("Enter width: ")
+            l = input("Enter length: ")
+            h = input("Enter height: ")
+        if l.isnumeric() and w.isnumeric() and h.isnumeric():
+            self.l = l 
+            self.w = w
+            self.h = h
+        
 
     def volume(self):
         return
     
     def surfaceArea(self):
         return
+    def __init__(self,kwargs**):
+        self.getmeasurements(kwargs)
 
+        pass
 # class instances and assertions below:
 
 a = rectPrism(l=10,w=2,h=5)
