@@ -7,28 +7,51 @@ Instantiate 3 separate rectangular prisms with the test data given, and check th
 import math
 class rectPrism:
 
-    def getmeasurements(self,kwargs**):
+    def getmeasurements(self):
         try: 
-            l = kwargs['l']
-            w = kwargs['w']
-            h = kwargs['h']
+            self.l = self.kw['l']
+            self.w = self.kw['w']
+            self.h = self.kw['h']
+            if self.l > 0 and self.w > 0 and self.h > 0:
+                pass
+            else:
+                print("That is not a valid rectangle")
+                self.go = False
+                return
         except: 
-            w = input("Enter width: ")
-            l = input("Enter length: ")
-            h = input("Enter height: ")
-        if l.isnumeric() and w.isnumeric() and h.isnumeric():
-            self.l = l 
-            self.w = w
-            self.h = h
+            done = False
+            while done == False:
+                w = input("Enter width: ")
+                l = input("Enter length: ")
+                h = input("Enter height: ")
+                if l.isnumeric() and w.isnumeric() and h.isnumeric():
+                    self.l = l 
+                    self.w = w
+                    self.h = h
+                    done = True 
+                else:
+                    print("Please re-enter measurements")
         
 
     def volume(self):
-        return
-    
+        if self.go != False:
+            self.v = self.h*self.l*self.w
+            return self.v
+        else:
+            return None
     def surfaceArea(self):
-        return
-    def __init__(self,kwargs**):
-        self.getmeasurements(kwargs)
+        if self.go != False:
+            h = self.h
+            l = self.l
+            w = self.w
+            self.sa = 2*(l*w+l*h+h*w)
+            return self.sa
+        else: 
+            return None
+    def __init__(self,**kwargs):
+        self.kw = kwargs
+        self.go = True
+        self.getmeasurements()
 
         pass
 # class instances and assertions below:
@@ -39,7 +62,7 @@ assert a.surfaceArea() == 160
 
 b = rectPrism(l=1,w=1,h=1)
 assert b.volume() == 1
-assert b.surfaceArea == 6
+assert b.surfaceArea() == 6
 
 c = rectPrism(l=2,w=0,h=10)
 # note the invalid width
